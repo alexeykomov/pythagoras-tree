@@ -1,0 +1,26 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+dump.rdb
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+# Node
+node_modules
+
+# Project
+build
+client_secret_*.json
+# For additionally disabled files, look into css/.gitignore, js/.gitignore,
+# logs/.gitignore

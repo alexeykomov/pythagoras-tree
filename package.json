@@ -1,0 +1,23 @@
+{
+  "name": "react-compact",
+  "version": "0.0.1",
+  "description": "React compact",
+  "main": "",
+  "directories": {},
+  "private": true,
+  "scripts": {
+    "build": "jade index.jade & lessc --clean-css less/all.less css/all.css",
+    "serve": "export CLASSPATH=$CLASSPATH:bin/react-closure-compiler.jar:bin/plovr.jar; java org.plovr.cli.Main serve plovr-config.json"
+  },
+  "keywords": [
+    "login",
+    "page"
+  ],
+  "author": [
+    "alexeykcontact@gmail.com (Alex K)"
+  ],
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+  }
+}

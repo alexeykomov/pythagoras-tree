@@ -1,0 +1,65 @@
+//
+// Copyright (c) 2013. Rflect, Alex K.
+//
+// Common less rules.
+// In order for this file to be pluggable everywhere, let there be pure less.
+//
+// @author alexeykofficial@gmail.com (Alex K)
+//
+
+
+.gradient(@colorStart, @colorStop) {
+  background-color: @colorStop;
+  /* @alternate */
+  background: -moz-linear-gradient(top, @colorStart 0, @colorStop 100%);
+  /* @alternate */
+  background: -webkit-gradient(linear, center top, center top, from(@colorStart), to(@colorStop));
+  /* @alternate */
+  background: -webkit-linear-gradient(top, @colorStart 0, @colorStop 100%);
+  /* @alternate */
+  background: -ms-linear-gradient(top, @colorStart 0, @colorStop 100%);
+  filter: e(%('progid:DXImageTransform.Microsoft.gradient(startColorStr = "%d", endColorStr = "%d")', @colorStart, @colorStop));
+  /* @alternate */
+  background: -o-linear-gradient(top, @colorStart 0, @colorStop 100%);
+  /* @alternate */
+  background: linear-gradient(top, @colorStart 0, @colorStop 100%);
+}
+
+.border-radius(@radius) {
+  /* @alternate */
+  -moz-border-radius: @radius;
+  /* @alternate */
+  -webkit-border-radius: @radius;
+  /* @alternate */
+  border-radius: @radius;
+}
+
+.box-shadow(@shadow) {
+  /* @alternate */
+  -moz-box-shadow: @shadow;
+  /* @alternate */
+  -webkit-box-shadow: @shadow;
+  /* @alternate */
+  box-shadow: @shadow;
+}
+
+.opacity(@opacity: 0.5) {
+  opacity: @opacity;
+  @opperc: @opacity * 100;
+  filter: ~'alpha(opacity=@{opperc})';
+}
+
+.box-sizing(@box-sizing: border-box) {
+  -webkit-box-sizing: @box-sizing;
+  -moz-box-sizing: @box-sizing;
+  box-sizing: @box-sizing;
+}
+
+.transition(@property, @transitionTime: .2s) {
+  -webkit-transition: @property @transitionTime;
+  transition: @property @transitionTime;
+}
+
+.no-tap-delay() {
+  -ms-touch-action: none !important;
+}
