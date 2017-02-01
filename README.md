@@ -1,9 +1,9 @@
-React compact.
+Pythagoras tree.
 =============
 
-This is boilerplate project to start developing in React with Closure compiler.
+This is Pythagoras tree fractal, built with SVG and React.
 
-This is a combination of fantastic tools such as [plovr](https://github.com/mihaip/react-closure-compiler) and [react-closure-compiler](https://github.com/mihaip/react-closure-compiler).
+![Pythagoras tree red on blue](https://upload.wikimedia.org/wikipedia/commons/f/f6/Red_Pythagoras_tree_with_blue_background.gif)
 
 Run
 ---
