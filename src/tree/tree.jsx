@@ -8,19 +8,16 @@
  */
 
 
-goog.provide('whisp.ui.ChatList');
+import { Sprout, SproutOrientation } from 'sprout';
 
 
-goog.require('whisp.action.OpenThreadFromThreadsAction');
-goog.require('whisp.Store');
-goog.require('goog.string');
-
-
+const BASE_LENGTH = 100;
 
 /**
  */
-const Tree = React.createClass({
+export const Tree = React.createClass({
   propTypes: {
+    generation: React.PropTypes.number.isRequired,
   },
 
   getInitialState() {
@@ -34,14 +31,15 @@ const Tree = React.createClass({
   },
 
   render() {
+    const WIDTH = 6 * BASE_LENGTH;
+    const HEIGHT = 4 * BASE_LENGTH;
     return (
-        <g className="list-block thread-list">
-          <ul>{
-            this.props.threads.map(this.threadToElement)
-          }</ul>
-        </g>
+        <svg width={WIDTH} height={HEIGHT} viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+             xmlns="http://www.w3.org/2000/svg">
+          <Sprout x={WIDTH / 2 + BASE_LENGTH / 2} y={HEIGHT - BASE_LENGTH}
+                  generation={0} order={0} side={BASE_LENGTH}
+                  orientation={SproutOrientation.MIDDLE} angle={0}/>
+        </svg>
     );
-  }
+  },
 });
-
-export Tree;

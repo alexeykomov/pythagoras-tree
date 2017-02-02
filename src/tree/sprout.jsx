@@ -8,42 +8,68 @@
  */
 
 
-import { Sprout } from 'sprout';
-
+/**
+ * @typedef {Object.<string>}
+ */
+export const SproutOrientation = {
+  LEFT: 'LEFT',
+  RIGHT: 'RIGHT',
+  MIDDLE: 'MIDDLE',
+};
 
 
 /**
  */
-const Sprout = React.createClass({
+export const Sprout = React.createClass({
   propTypes: {
     generation: React.PropTypes.number.isRequired,
-    treeAge: React.PropTypes.number.isRequired,
-    baseSideLength: React.PropTypes.number.isRequired,
+    order: React.PropTypes.number.isRequired,
+    side: React.PropTypes.number.isRequired,
+    angle: React.PropTypes.number,
+    parentAngle: React.PropTypes.number,
+    orientation: React.PropTypes.object.isRequired,
   },
 
   getDefaultProps() {
     return {
       generation: 0,
-      treeAge: 0,
+      order: 0,
+      orientation: SproutOrientation.MIDDLE,
     }
   },
 
+  getRotateAttribute() {
+    switch (this.orientation) {
+      case SproutOrientation.RIGHT: {
+        return `rotate(${this.angle} ${this.props.x} ${})`
+      }
+
+      case SproutOrientation.MIDDLE: {
+        return ``
+      };break;
+      default: break;
+    }
+
+    return `rotate()`;
+  },
+
   render() {
-    const sideLength = this.props.baseSideLength * Math.sin(Math.PI / 4);
+    const sideLength = this.props.side * Math.sin(Math.PI / 4);
     return (
         <g>
-          <rect x={} y={} width={} height={}/>
+          <rect x={this.props.x} y={this.props.y} width={this.props.side}
+                height={this.props.side} transform={this.getRotateAttribute()}/>
 
           {() => {
-            if (this.props.generation >= this.props.treeAge) {
+            if (this.props.generation >= this.props.order) {
               return <g>
                 <Sprout generation={this.props.generation + 1}
-                  treeAge={this.props.treeAge}
-                        baseSideLength={}
+                        order={this.props.order}
+                        side={}
                 />
                 <Sprout generation={this.props.generation + 1}
-                  treeAge={this.props.treeAge}
-                        baseSideLength={}
+                        order={this.props.order}
+                        side={}
                 />
               </g>
             } else
@@ -52,6 +78,4 @@ const Sprout = React.createClass({
         </g>
     );
   },
-})
-
-export Sprout;
+});
