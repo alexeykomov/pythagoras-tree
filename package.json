@@ -6,18 +6,28 @@
   "directories": {},
   "private": true,
   "scripts": {
-    "build": "jade index.jade & lessc --clean-css less/all.less css/all.css",
-    "serve": "export CLASSPATH=$CLASSPATH:bin/react-closure-compiler.jar:bin/plovr.jar; java org.plovr.cli.Main serve plovr-config.json"
+    "build": "jade index.jade && lessc --clean-css less/all.less css/all.css && npm run compile-prod",
+    "serve": "export CLASSPATH=$CLASSPATH:bin/react-closure-compiler.jar:bin/plovr.jar; java org.plovr.cli.Main serve plovr-config.json",
+    "compile": "npm run jsx -s && java -jar bin/closure-compiler-1.0-SNAPSHOT.jar --js=src/react-0.13.1-build/react.js --js=src/predefined.js --js=src/tree/**.js --js=src/index.js --externs=src/externs.js --js_output_file='target/output-compiled-ui.js' --charset=utf-8 --compilation_level=ADVANCED_OPTIMIZATIONS --summary_detail_level=3 --warning_level=VERBOSE --debug=true --source_map_format=V3 --language_in=ECMASCRIPT6 --language_out=ECMASCRIPT5 --output_wrapper=';(function(){%output%})();' --formatting=PRETTY_PRINT --define='DEBUG=true'",
+    "compile-prod": "npm run jsx -s && java -jar bin/closure-compiler-1.0-SNAPSHOT.jar --js=src/react-0.13.1-build/react.js --js=src/predefined.js --js=src/tree/**.js --js=src/index.js --externs=src/externs.js --js_output_file='target/output-compiled-ui.js' --charset=utf-8 --compilation_level=ADVANCED_OPTIMIZATIONS --summary_detail_level=3 --warning_level=VERBOSE --source_map_format=V3 --language_in=ECMASCRIPT6 --language_out=ECMASCRIPT5 --output_wrapper=';(function(){%output%})();' --define='DEBUG=false'",
+    "jsx": "node ./bin/babel-jsx.js"
   },
   "keywords": [
-    "login",
-    "page"
+    "pythagoras",
+    "tree",
+    "fractal"
   ],
   "author": [
     "alexeykcontact@gmail.com (Alex K)"
   ],
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-syntax-jsx": "^6.8.0",
+    "babel-plugin-transform-react-jsx": "^6.8.0"
+  },
   "dependencies": {
   }
 }

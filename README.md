@@ -2,12 +2,13 @@ Pythagoras tree.
 =============
 
 This is Pythagoras tree fractal, built with SVG and React.
+This is also a demonstration of how React can be compiled with Closure compiler.
 
-![Pythagoras tree red on blue](https://upload.wikimedia.org/wikipedia/commons/f/f6/Red_Pythagoras_tree_with_blue_background.gif)
+![Pythagoras tree, brown color with green leafs](https://alexeykomov.github.io/img/ScreenShot2017-02-11at17.45.07.png)
 
 Run
 ---
-1. `npm run build && npm run serve`
+1. `npm run build`
 2. `python -m SimpleHTTPServer`
 3. Visit [http://localhost:8000](http://localhost:8000)
 

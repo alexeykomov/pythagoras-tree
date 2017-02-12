@@ -1,33 +1,57 @@
 /*
- * Copyright (c) 2015. Reflect, Alex K.
+ * Copyright (c) 2017. Reflect, Alex K.
  */
 
 /**
- * @fileoverview Application main body, root of all components.
+ * @fileoverview Tree main component.
  * @author alexeykcontact@gmail.com (Alex K.)
  */
 
 
-import { Sprout, SproutOrientation } from 'sprout';
+import { Sprout, SproutOrientation } from './sprout.jsx';
 
 
 const BASE_LENGTH = 100;
+const TIME_BETWEEN_GENERATION_TICKS = 300;
+const INITIAL_GENERATION = 0;
 
-/**
- */
+
+
 export const Tree = React.createClass({
+  timerId: 0,
+
   propTypes: {
-    generation: React.PropTypes.number.isRequired,
+    order: React.PropTypes.number.isRequired,
   },
 
   getInitialState() {
     return {
-      generation: 0
+      generation: 0,
     }
   },
 
   getDefaultProps() {
-    return {}
+    return {
+      order: 0
+    }
+  },
+
+  componentDidMount() {
+      this.onGenerationUp(INITIAL_GENERATION);
+  },
+
+  componentWillUnmount() {
+      clearTimeout(this.timerId);
+  },
+
+  onGenerationUp(aGeneration) {
+    this.setState({
+      generation: aGeneration
+    });
+    if (aGeneration + 1 <= this.props.order) {
+      this.timerId = setTimeout(this.onGenerationUp.bind(this, aGeneration + 1),
+          TIME_BETWEEN_GENERATION_TICKS);
+    }
   },
 
   render() {
@@ -35,10 +59,18 @@ export const Tree = React.createClass({
     const HEIGHT = 4 * BASE_LENGTH;
     return (
         <svg width={WIDTH} height={HEIGHT} viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-             xmlns="http://www.w3.org/2000/svg">
-          <Sprout x={WIDTH / 2 + BASE_LENGTH / 2} y={HEIGHT - BASE_LENGTH}
-                  generation={0} order={0} side={BASE_LENGTH}
-                  orientation={SproutOrientation.MIDDLE} angle={0}/>
+             xmlns="http://www.w3.org/2000/svg" className="main-canvas">
+          <Sprout points={[
+            [WIDTH / 2 - BASE_LENGTH / 2, 0],
+            [WIDTH / 2 - BASE_LENGTH / 2, BASE_LENGTH],
+            [WIDTH / 2 + BASE_LENGTH / 2, BASE_LENGTH],
+            [WIDTH / 2 + BASE_LENGTH / 2, 0]
+          ]} generation={0} treeGeneration={this.state.generation}
+                  order={this.props.order}
+                  side={BASE_LENGTH}
+                  orientation={SproutOrientation.MIDDLE}
+                  angle={0}
+          />
         </svg>
     );
   },

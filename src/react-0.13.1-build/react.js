@@ -15067,7 +15067,7 @@ var SVGDOMPropertyConfig = {
     opacity: MUST_USE_ATTRIBUTE,
     patternContentUnits: MUST_USE_ATTRIBUTE,
     patternUnits: MUST_USE_ATTRIBUTE,
-    points: MUST_USE_ATTRIBUTE,
+    'points': MUST_USE_ATTRIBUTE,
     preserveAspectRatio: MUST_USE_ATTRIBUTE,
     r: MUST_USE_ATTRIBUTE,
     rx: MUST_USE_ATTRIBUTE,
