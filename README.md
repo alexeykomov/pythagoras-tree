@@ -10,7 +10,7 @@ http://alexeykomov.me/pythagoras-tree/
 
 Screenshot
 -
-![Pythagoras tree, brown color with green leafs](https://alexeykomov.github.io/pythagoras-tree/img//Users/alexk/Work/pythagoras-tree/img/ScreenShot2017-02-12at15.55.17.png)
+![Pythagoras tree, brown color with green leafs](https://alexeykomov.github.io/pythagoras-tree/img/ScreenShot2017-02-12at15.55.17.png)
 
 Run
 ---
