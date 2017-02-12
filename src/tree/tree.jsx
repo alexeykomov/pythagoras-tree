@@ -58,7 +58,7 @@ export const Tree = React.createClass({
     const WIDTH = 6 * BASE_LENGTH;
     const HEIGHT = 4 * BASE_LENGTH;
     return (
-        <svg width={WIDTH} height={HEIGHT} viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+        <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
              xmlns="http://www.w3.org/2000/svg" className="main-canvas">
           <Sprout points={[
             [WIDTH / 2 - BASE_LENGTH / 2, 0],

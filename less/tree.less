@@ -15,21 +15,30 @@ html {
 
 body {
   .default-font();
-  .flex-display();
-  .flex-direction(column);
-  .flex-wrap();
-  .justify-content(center);
-  .align-content();
-  .align-items(center);
 
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
+header {
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+
+  h4 {
+    margin: 0;
+  }
+}
+
 main {
+  height: ~"calc(100% - 100px)";
+  width: 100%;
+  overflow: hidden;
 }
 
 .main-canvas {
-  transform: rotateX(180deg)
+  height: 100%;
+  width: 100%;
+  transform: rotateX(180deg);
 }
